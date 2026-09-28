@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kundenabwanderung bei Teleconfia — Laura Dolores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../index.html" class="brand">
+      <span class="brand-mark"></span>
+      Laura Dolores
+    </a>
+    <div class="navlinks">
+      <a href="../index.html#profil">Profil</a>
+      <a href="../index.html#kompetenzen">Kompetenzen</a>
+      <a href="../index.html#projekte">Projekte</a>
+      <a href="../sobre-mi.html">Über mich</a>
+    </div>
+    <a href="../index.html#kontakt" class="nav-cta">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="breadcrumb"><a href="../index.html">← Zurück zum Portfolio</a></div>
+
+    <!-- HERO -->
+    <section class="proj-hero">
+      <div class="kicker">Fallstudie 01 · Python &amp; SQL</div>
+      <h1>Kundenabwanderung bei Teleconfia</h1>
+      <p class="pitch">
+        Teleconfia, ein Telekommunikationsanbieter, testet den Markteintritt in Florida — mit
+        deutlicher Kundenabwanderung nach Ablauf der Einführungskonditionen. Ziel dieser Analyse:
+        herausfinden, welche Stadtgebiete und welche individuellen Kunden am stärksten gefährdet
+        sind, um zwei gezielte Marketingkampagnen zu ermöglichen.
+      </p>
+      <div class="proj-meta">
+        <div><dt>Werkzeuge</dt><dd>Python (pandas, matplotlib, statsmodels), SQL, SQLAlchemy</dd></div>
+        <div><dt>Datengrundlage</dt><dd>Kundendaten Florida, 1 Jahr, SQLite-Datenbank</dd></div>
+        <div><dt>Methodik</dt><dd>EDA, Segmentierung, logistische Regression</dd></div>
+      </div>
+    </section>
+
+    <!-- KONTEXT & FRAGESTELLUNG -->
+    <section class="block" style="border-top:none;">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--ink);">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="0.9" fill="currentColor"/></svg>
+        </span>
+        <h2>Kontext &amp; Fragestellung</h2>
+      </div>
+      <p>
+        Teleconfia bot neuen Kundinnen und Kunden ein Jahr lang vergünstigte Konditionen für die
+        Nutzung des Netzes an. Nach Ablauf dieser Frist wanderten viele von ihnen ab (Churn). Um
+        dem entgegenzuwirken, sollten zwei Marketingkampagnen entwickelt werden: eine
+        Plakatkampagne für besonders betroffene Stadtgebiete und eine individuelle
+        Kontaktaufnahme mit Kundinnen und Kunden, die wahrscheinlich abwandern.
+      </p>
+      <p>
+        Konkret sollten folgende Fragen beantwortet werden:
+      </p>
+      <ul class="plain">
+        <li>Welche vier Stadtgebiete weisen die höchste Kundenabwanderung auf?</li>
+        <li>Welche kategorische Datenreihe eignet sich, um individuell gefährdete Kunden zu identifizieren?</li>
+        <li>Welche ganzzahlige Datenreihe eignet sich dafür, und wo liegt ein sinnvoller Grenzwert?</li>
+        <li>Welche Fließkomma-Datenreihe ergänzt diese Auswahl — bestimmt über eine logistische Regression?</li>
+        <li>Wie lassen sich die Ergebnisse visualisieren und in konkrete Empfehlungen übersetzen?</li>
+      </ul>
+    </section>
+
+    <!-- METHODIK -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--pass);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h2>Vorgehen</h2>
+      </div>
+      <p>
+        Die Kundendaten wurden über eine SQLite-Datenbank eingelesen — verbunden mit Python über
+        SQLAlchemy, sodass SQL-Abfragen direkt in den Analyseworkflow eingebunden werden konnten.
+        Nach der Prüfung und Bereinigung der Daten folgte die explorative Analyse je Stadtgebiet,
+        gefolgt von der Untersuchung dreier möglicher Risikosignale auf individueller Kundenebene:
+        eine kategorische Variable, eine ganzzahlige Variable mit einem naheliegenden Grenzwert,
+        und eine Fließkomma-Variable, deren Grenzwert über eine logistische Regression bestimmt
+        wurde. Jeder Schritt wurde visualisiert, um die Empfehlungen nachvollziehbar zu machen.
+      </p>
+      <div class="stack-tags">
+        <span>pandas</span><span>matplotlib</span><span>statsmodels</span>
+        <span>SQLAlchemy</span><span>SQLite</span><span>Jupyter Notebook</span>
+      </div>
+    </section>
+
+    <!-- HALLAZGO 1: STADTGEBIETE -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--flag);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <h2>1. Stadtgebiete mit höchster Abwanderung</h2>
+      </div>
+      <p>
+        Der Gesamtdurchschnitt der Abwanderungsrate liegt bei <strong>14,5 %</strong>. Vier
+        Stadtgebiete liegen deutlich darüber und wurden für die Plakatkampagne priorisiert:
+        Jacksonville (29,8 %), Orlando1 (23,7 %), Cape Coral (21,8 %) und Orlando2 (19,1 %).
+      </p>
+      <div class="finding">
+        <div class="finding-chart">
+          <img src="../assets/images/churn/chart-stadtgebiete.png" alt="Balkendiagramm der Abwanderungsrate nach Stadtgebiet, mit den vier höchsten Werten in Rot hervorgehoben">
+        </div>
+      </div>
+    </section>
+
+    <!-- HALLAZGO 2: INTERNATIONAL PLAN -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--flag);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <h2>2. Kategorisches Risikosignal: International Plan</h2>
+      </div>
+      <p>
+        Kundinnen und Kunden mit aktivem International Plan wandern deutlich häufiger ab:
+        <strong>42,4 %</strong> gegenüber <strong>11,5 %</strong> ohne den Plan — ein klarer
+        Risikofaktor, mutmaßlich durch Preis-Leistungs-Wahrnehmung oder Kostentransparenz bedingt.
+      </p>
+      <div class="finding">
+        <div class="finding-chart">
+          <img src="../assets/images/churn/chart-international-plan.png" alt="Balkendiagramm: Abwanderungsrate nach International Plan, Yes 42,4 % vs. No 11,5 %">
+        </div>
+        <div class="finding-note">
+          <div>
+            <div class="finding-kpi">186</div>
+            <div class="finding-kpi-label">aktive Kunden mit International Plan, die noch nicht abgewandert sind</div>
+          </div>
+          <div>
+            <p style="margin:0; max-width:none; text-align:left;">
+              Diese Gruppe wird für die individuelle Kampagne priorisiert — z. B. mit proaktiver
+              Tarifberatung oder Sonderkonditionen.
+            </p>
+            <div class="finding-table-wrap">
+              <img src="../assets/images/churn/kpi-international-plan.png" alt="Tabelle mit Beispieldatensätzen der 186 gefährdeten Kunden mit International Plan">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HALLAZGO 3: SERVICE CALLS -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--flag);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <h2>3. Ganzzahliges Risikosignal: Kundenservice-Anrufe</h2>
+      </div>
+      <p>
+        Bis zu drei Anrufen bleibt die Abwanderungsrate im Bereich von 10–13 %. Ab
+        <strong>vier Anrufen</strong> steigt sie sprunghaft an — bis auf 100 % bei neun Anrufen.
+        Die Anzahl der Service-Anrufe ist damit ein starkes Frühwarnsignal für Unzufriedenheit.
+      </p>
+      <div class="finding">
+        <div class="finding-chart">
+          <img src="../assets/images/churn/chart-service-calls.png" alt="Balkendiagramm: Abwanderungsrate nach Anzahl der Kundenservice-Anrufe, mit Grenzwert bei 4 Anrufen markiert">
+        </div>
+        <div class="finding-note">
+          <div>
+            <div class="finding-kpi">129</div>
+            <div class="finding-kpi-label">aktive Kunden mit ≥ 4 Service-Anrufen, die noch nicht abgewandert sind</div>
+          </div>
+          <div>
+            <p style="margin:0; max-width:none; text-align:left;">
+              Diese Kunden gelten als „akut gefährdet" und sollten prioritär kontaktiert werden —
+              Fokus: Problemlösung und individuelle Angebote.
+            </p>
+            <div class="finding-table-wrap">
+              <img src="../assets/images/churn/kpi-service-calls.png" alt="Tabelle mit Beispieldatensätzen der 129 gefährdeten Kunden mit vier oder mehr Service-Anrufen">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HALLAZGO 4: REGRESIÓN -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--flag);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <h2>4. Fließkomma-Signal: Logistische Regression</h2>
+      </div>
+      <p>
+        Um das dritte Kriterium datenbasiert zu bestimmen, wurde eine logistische Regression auf
+        <span class="mono">total_day_minutes</span> angewendet. Die S-Kurve zeigt: ab
+        <strong>350,74 Tagesminuten</strong> liegt die vorhergesagte Abwanderungswahrscheinlichkeit
+        über 50 %. Dieser Grenzwert kann zukünftig genutzt werden, um Heavy-User frühzeitig zu
+        markieren.
+      </p>
+      <div class="finding">
+        <div class="finding-chart">
+          <img src="../assets/images/churn/chart-regression.png" alt="S-Kurve der logistischen Regression: Abwanderungswahrscheinlichkeit nach Tagesminuten, mit Grenzwert bei 350,74 Minuten">
+        </div>
+        <div class="finding-note">
+          <div>
+            <div class="finding-kpi">1</div>
+            <div class="finding-kpi-label">aktiver Kunde über dem Grenzwert von 350,74 Tagesminuten</div>
+          </div>
+          <div>
+            <p style="margin:0; max-width:none; text-align:left;">
+              Ein einzelner Heavy-User mit hohem Risiko — dieser Grenzwert eignet sich vor allem
+              als Frühwarnsystem für zukünftige Kunden mit ähnlichem Nutzungsprofil.
+            </p>
+            <div class="finding-table-wrap">
+              <img src="../assets/images/churn/kpi-regression.png" alt="Tabelle mit dem einzelnen Kunden über dem Grenzwert von 350,74 Tagesminuten">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPFEHLUNGEN -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--ink);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.6h5.6v-.6c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <h2>Empfehlungen</h2>
+      </div>
+      <div class="reco-list">
+        <div class="reco-item">
+          <span class="reco-num mono">01</span>
+          <div class="reco-body"><strong>Kampagne 1 — Plakate:</strong> Fokus auf Jacksonville, Orlando1, Cape Coral und Orlando2, ergänzt um eine Prüfung möglicher Ursachen (Netzqualität, Wettbewerb, Service vor Ort).</div>
+        </div>
+        <div class="reco-item">
+          <span class="reco-num mono">02</span>
+          <div class="reco-body"><strong>Kampagne 2 — Priorisierte Kontaktliste:</strong> Die drei Risikofaktoren (International Plan, ≥ 4 Service-Anrufe, &gt; 350,74 Tagesminuten) kombinieren und Kunden mit mehreren gleichzeitigen Faktoren zuerst ansprechen.</div>
+        </div>
+        <div class="reco-item">
+          <span class="reco-num mono">03</span>
+          <div class="reco-body"><strong>Maßnahmen:</strong> Tarifoptimierung und bessere Kommunikation beim International Plan, Beschwerdemanagement bei häufigen Service-Anrufen, proaktive Ansprache von Heavy-Usern.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIMITATIONEN -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--muted);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4M12 16.5h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10.3 4.5 2.9 18a1.6 1.6 0 0 0 1.4 2.4h15.4a1.6 1.6 0 0 0 1.4-2.4L13.7 4.5a1.6 1.6 0 0 0-2.8 0z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <h2>Limitationen</h2>
+      </div>
+      <ul class="limits-box">
+        <li>Die Daten decken nur ein Jahr und ausschließlich das Pilotgebiet Florida ab.</li>
+        <li>Preis-, Wettbewerbs- und Netzqualitätsdaten lagen nicht vor.</li>
+        <li>Die logistische Regression basiert auf einem einzelnen Prädiktor; ein Modell mit mehreren Variablen könnte zusätzliche Einsichten liefern.</li>
+        <li>Korrelation bedeutet keine Kausalität — die identifizierten Signale sind starke Indikatoren, nicht zwingend Ursachen der Abwanderung.</li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <section class="block" style="padding-bottom:80px;">
+      <p style="margin:0 0 4px;">Den vollständigen Code — Datenbereinigung, Analyse und Regression — findest du im Repository.</p>
+      <div class="proj-cta">
+        <a href="https://github.com/GloriaC25/teleconfia-churn-analysis" class="btn-primary">Code auf GitHub ansehen</a>
+        <a href="../index.html#projekte" class="btn-secondary">Weitere Projekte</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-contact">
+        <a href="mailto:deine.email@beispiel.de">deine.email@beispiel.de</a>
+        <a href="https://linkedin.com/in/dein-profil" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/dein-username" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="foot-note">© 2026 Laura Dolores — Portfolio</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pünktlichkeitsanalyse LAX Airport — Laura Dolores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../index.html" class="brand">
+      <span class="brand-mark"></span>
+      Laura Dolores
+    </a>
+    <div class="navlinks">
+      <a href="../index.html#profil">Profil</a>
+      <a href="../index.html#kompetenzen">Kompetenzen</a>
+      <a href="../index.html#projekte">Projekte</a>
+      <a href="../sobre-mi.html">Über mich</a>
+    </div>
+    <a href="../index.html#kontakt" class="nav-cta">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="breadcrumb"><a href="../index.html">← Zurück zum Portfolio</a></div>
+
+    <!-- HERO -->
+    <section class="proj-hero">
+      <div class="kicker">Fallstudie 02 · Power BI</div>
+      <h1>Pünktlichkeitsanalyse LAX Airport</h1>
+      <p class="pitch">
+        Für den Flughafenbetreiber fLAirport sollte ein abteilungsübergreifender Bericht zur
+        Pünktlichkeit am Los Angeles International Airport entstehen — als gemeinsame
+        Diskussionsgrundlage für eine 15-minütige Präsentation vor den Führungskräften.
+      </p>
+      <div class="proj-meta">
+        <div><dt>Werkzeuge</dt><dd>Power BI Desktop, DAX, Datenmodellierung</dd></div>
+        <div><dt>Datengrundlage</dt><dd>Flugdaten LAX, 2015–2017 (Abflug &amp; Ankunft)</dd></div>
+        <div><dt>Methodik</dt><dd>KPI-Dashboards, Segmentierung, Data Storytelling</dd></div>
+      </div>
+    </section>
+
+    <!-- KONTEXT & FRAGESTELLUNG -->
+    <section class="block" style="border-top:none;">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--ink);">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="16" r="0.9" fill="currentColor"/></svg>
+        </span>
+        <h2>Kontext &amp; Fragestellung</h2>
+      </div>
+      <p>
+        Unpünktliche Flüge am größten Standort der Fluggesellschaft, dem Los Angeles
+        International Airport, sollten routinemäßig untersucht werden. Ziel war ein aktueller
+        Überblick der Lage sowie die Identifikation von Häufungen, auf die interne Prozesse
+        abgestimmt werden können — getrennt betrachtet nach Abflug und Ankunft.
+      </p>
+      <p>
+        Konkret sollten folgende Fragen beantwortet werden:
+      </p>
+      <ul class="plain">
+        <li>Wie sehen die wichtigsten Kennzahlen rund um Flüge und Pünktlichkeit aus?</li>
+        <li>Welche drei Airlines haben die höchste durchschnittliche Unpünktlichkeit pro Flug, und wie hoch ist ihr Anteil unpünktlicher Flüge?</li>
+        <li>In welchen Zeiträumen treten besonders unpünktliche Flüge auf — lassen sich wiederkehrende Muster erkennen?</li>
+      </ul>
+      <p>
+        Datengrundlage waren die Flugdaten von 2015 bis 2017, ausschließlich Flüge mit Abflug
+        oder Ankunft in LAX. Gestrichene oder umgeleitete Flüge blieben außen vor. Ein Flug galt
+        ab 5 Minuten Abweichung von der geplanten Zeit als unpünktlich.
+      </p>
+      <div class="finding">
+        <div class="finding-chart">
+          <img src="../assets/images/lax/01-kontext.png" alt="Titelfolie der Präsentation: Analyse unpünktlicher Flüge am Los Angeles International Airport, mit Zielsetzung und Datengrundlage 2015 bis 2017">
+        </div>
+      </div>
+    </section>
+
+    <!-- VORGEHEN -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--pass);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </span>
+        <h2>Vorgehen</h2>
+      </div>
+      <p>
+        Die Flugdaten wurden in Power BI Desktop geladen, bereinigt und in ein Datenmodell
+        überführt. Mit berechneten Kennzahlen (DAX) entstanden die zentralen KPIs zur
+        Pünktlichkeit, ergänzt um Filter für Flugrichtung (Abflug/Ankunft) sowie Jahr, Monat,
+        Kalenderwoche, Wochentag und Stunde — damit lässt sich jede Kennzahl flexibel nach
+        Zeitraum und Richtung aufschlüsseln. Die Ergebnisse wurden abschließend als
+        Führungskräfte-Präsentation nach den Grundsätzen des Data Storytelling aufbereitet:
+        Kontext, Narrativ und Visualisierung.
+      </p>
+      <div class="stack-tags">
+        <span>Power BI Desktop</span><span>DAX</span><span>Datenmodellierung</span>
+        <span>KPI-Dashboards</span><span>Data Storytelling</span>
+      </div>
+    </section>
+
+    <!-- HALLAZGO 1: ÜBERSICHT -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--flag);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <h2>1. Übersicht der wichtigsten Kennzahlen</h2>
+      </div>
+      <p>
+        Von insgesamt <strong>1,26 Millionen Flügen</strong> waren <strong>70,15 %</strong>
+        unpünktlich — im Schnitt um 26 Minuten, bei einer durchschnittlichen Abweichung von 19
+        Minuten über alle Flüge hinweg. Etwas mehr Flüge waren zu früh als zu spät (50,17 % vs.
+        49,83 %). Die Übersicht lässt sich nach Airline, Jahr, Monat und Flugrichtung filtern.
+      </p>
+      <div class="finding">
+        <div class="finding-chart">
+          <img src="../assets/images/lax/02-uebersicht.png" alt="Dashboard: Übersicht Flüge und Unpünktlichkeit aus LAX-Perspektive, mit Gesamtzahl Flüge, Anteil unpünktlicher Flüge und Tabelle je Fluglinie">
+        </div>
+      </div>
+    </section>
+
+    <!-- HALLAZGO 2: TOP 3 AIRLINES -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--flag);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <h2>2. Airlines mit höchster Unpünktlichkeit</h2>
+      </div>
+      <p>
+        Nach durchschnittlicher Verspätung pro Flug führen <strong>Envoy Air</strong> (40 Min.),
+        <strong>Frontier Airlines</strong> (31 Min.) und <strong>JetBlue Airways</strong> (30
+        Min.) — wobei Envoy Air nur sehr wenige Flüge hat, diese aber fast immer verspätet sind.
+        Betrachtet man stattdessen den <em>Anteil</em> unpünktlicher Flüge, führen Frontier
+        (77,62 %), Spirit Air Lines (75,48 %) und JetBlue (74,30 %).
+      </p>
+      <div class="finding">
+        <div class="finding-chart">
+          <img src="../assets/images/lax/03-top3-airlines.png" alt="Dashboard: Airlines mit höchster durchschnittlicher Unpünktlichkeit — Envoy Air, Frontier Airlines und JetBlue Airways, mit Anteil unpünktlicher Flüge der Top-3-Airlines">
+        </div>
+      </div>
+    </section>
+
+    <!-- HALLAZGO 3: ZEITLICHE MUSTER -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--flag);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        </span>
+        <h2>3. Zeitliche Muster der Unpünktlichkeit</h2>
+      </div>
+      <p>
+        Über Monat, Kalenderwoche, Wochentag und Tagesstunde zeigen sich wiederkehrende
+        Häufungen: Verspätungen steigen in den Sommermonaten (Juli, August) und um die
+        Feiertage (Dezember, Januar) an. Nach Wochentag sind Freitag und Sonntag auffällig,
+        nach Tageszeit vor allem der späte Abend ab 20 Uhr, mit einem Spitzenwert zwischen 2
+        und 3 Uhr morgens.
+      </p>
+      <div class="finding">
+        <div class="finding-chart">
+          <img src="../assets/images/lax/04-zeitliche-muster.png" alt="Dashboard: Zeitliche Muster der Unpünktlichkeit nach Monat, Kalenderwoche, Wochentag und Stunde des Abflugs">
+        </div>
+      </div>
+    </section>
+
+    <!-- EMPFEHLUNGEN -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--ink);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.6h5.6v-.6c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <h2>Was bedeutet das für uns?</h2>
+      </div>
+      <div class="reco-list">
+        <div class="reco-item">
+          <span class="reco-num mono">01</span>
+          <div class="reco-body"><strong>Ankünfte stärker betroffen:</strong> mit fast 82 % Verspätung, oft verursacht durch vorherige Verspätungen an anderen Flughäfen. Abflüge lassen sich intern besser steuern, Ankünfte brauchen mehr Koordination mit externen Partnern.</div>
+        </div>
+        <div class="reco-item">
+          <span class="reco-num mono">02</span>
+          <div class="reco-body"><strong>Frontier und JetBlue</strong> sind über alle Jahre hinweg die kritischsten Airlines. Envoy Air hat zwar wenige Flüge, diese sind aber fast immer verspätet und mit besonders langen Wartezeiten.</div>
+        </div>
+        <div class="reco-item">
+          <span class="reco-num mono">03</span>
+          <div class="reco-body"><strong>Kritische Zeiten:</strong> Sommermonate und Feiertage, Freitag und Sonntag, sowie der Abend ab 20 Uhr — hier empfiehlt sich mehr Personal in den kritischen Zeitfenstern und engere Abstimmung mit den auffälligen Airlines.</div>
+        </div>
+      </div>
+      <div class="finding" style="margin-top:32px;">
+        <div class="finding-chart">
+          <img src="../assets/images/lax/05-ergebnisse.png" alt="Ergebnisfolie: Was bedeutet das für uns? Zusammenfassung der Erkenntnisse zu Ankünften, kritischen Airlines und Zeitfenstern mit Handlungsempfehlungen">
+        </div>
+      </div>
+    </section>
+
+    <!-- LIMITATIONEN -->
+    <section class="block">
+      <div class="block-head">
+        <span class="icon-badge" style="color:var(--muted);">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4M12 16.5h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M10.3 4.5 2.9 18a1.6 1.6 0 0 0 1.4 2.4h15.4a1.6 1.6 0 0 0 1.4-2.4L13.7 4.5a1.6 1.6 0 0 0-2.8 0z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </span>
+        <h2>Limitationen</h2>
+      </div>
+      <ul class="limits-box">
+        <li>Die Analyse deckt ausschließlich LAX und die Jahre 2015–2017 ab.</li>
+        <li>Gestrichene oder umgeleitete Flüge sind nicht enthalten — sie werden gesondert untersucht.</li>
+        <li>Ursachen für Verspätungen (z. B. Wetter, technische Störungen) wurden nicht analysiert, nur deren zeitliche und airline-bezogene Muster.</li>
+        <li>Ankunftsverspätungen hängen häufig von vorherigen Flughäfen ab, die außerhalb dieser Betrachtung liegen.</li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <section class="block" style="padding-bottom:80px;">
+      <p style="margin:0 0 4px;">Eine interaktive Version mit Live-Filtern befindet sich in Vorbereitung.</p>
+      <div class="proj-cta">
+        <a href="../index.html#projekte" class="btn-secondary">Weitere Projekte</a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-contact">
+        <a href="mailto:deine.email@beispiel.de">deine.email@beispiel.de</a>
+        <a href="https://linkedin.com/in/dein-profil" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://github.com/dein-username" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="foot-note">© 2026 Laura Dolores — Portfolio</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
