@@ -16,12 +16,6 @@
     color:var(--ink);
     font-family:'IBM Plex Sans', sans-serif;
     line-height:1.5;
-    background-image:
-      linear-gradient(var(--line) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-position: -1px -1px;
-    background-attachment: fixed;
   }
   .mono{font-family:'IBM Plex Mono', monospace;}
   a{color:inherit;}
